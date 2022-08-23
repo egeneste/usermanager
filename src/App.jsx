@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
-import axios from 'axios'
+import axios from 'redaxios'
 
 import './App.css'
 import UsersList from './componentes/UsersList'
