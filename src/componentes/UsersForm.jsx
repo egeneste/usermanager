@@ -7,6 +7,14 @@ const UsersForm = ({URL, getAllUsers, userToEdit, setUserToEdit}) => {
   const [formVisible, setFormVisible] = useState(true)
   const {register, handleSubmit, reset} = useForm()
 
+  const cleanUser = {
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "password": "",
+    "birthday": ""
+}
+
   useEffect(()=> {
     if (userToEdit){
         reset(userToEdit)
@@ -25,25 +33,16 @@ const UsersForm = ({URL, getAllUsers, userToEdit, setUserToEdit}) => {
     showHide_form()
     await axios.post(URL, data)
     getAllUsers()
-    reset({
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "password": ""
-    })
+    reset(cleanUser)
 
   }
 
   const updateData = async (data) => {
     showHide_form()
-    await axios.patch(URL, data)
+    const $URL = `${URL}${data.id}/`
+    await axios.patch($URL, data)
     getAllUsers()
-    reset({
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "password": ""
-    })
+    reset(cleanUser)
   }
   
   return (

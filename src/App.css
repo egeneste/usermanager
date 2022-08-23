@@ -58,6 +58,9 @@ hr {
     white-space: nowrap;
 }
 
+.card-info {
+  font-weight: 700;
+}
 
 .gift {
   display: flex;
